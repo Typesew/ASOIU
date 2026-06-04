@@ -1,0 +1,23 @@
+@model ModuleHomework3.Models.Category
+@{
+    ViewData["Title"] = "Удаление категории";
+}
+
+<h1>Удаление категории</h1>
+<p>Вы уверены, что хотите удалить категорию <strong>@Model.Name</strong>?</p>
+
+@if (Model.Products.Any())
+{
+    <div class="error">
+        ⚠️ Внимание! В этой категории есть товары. Удаление невозможно.
+    </div>
+    <a href="/Category" class="btn btn-primary">Назад</a>
+}
+else
+{
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="/Category" class="btn btn-primary">Отмена</a>
+    </form>
+}

@@ -1,0 +1,13 @@
+@model ModuleHomework3.Models.Product
+@{
+    ViewData["Title"] = "Удаление товара";
+}
+
+<h1>Удаление товара</h1>
+<p>Вы уверены, что хотите удалить товар <strong>@Model.Name</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="/Product" class="btn btn-primary">Отмена</a>
+</form>

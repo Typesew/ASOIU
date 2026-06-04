@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Отчёты";
+    var report1 = ViewBag.Report1 as IEnumerable<dynamic>;
+    var report2 = ViewBag.Report2 as IEnumerable<dynamic>;
+    var report3 = ViewBag.Report3 as IEnumerable<dynamic>;
+}
+
+<h1>📊 Аналитические отчёты</h1>
+<hr>
+
+<h2>1. Список товаров по категориям</h2>
+<table>
+    <thead>
+        <tr><th>Название товара</th><th>Категория</th><th>Цена (руб.)</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in report1)
+    {
+        <tr><td>@item.Name</td><td>@item.CategoryName</td><td>@item.Price</td></tr>
+    }
+    </tbody>
+</table>
+
+<hr>
+
+<h2>2. Количество товаров по категориям</h2>
+<table>
+    <thead>
+        <tr><th>Категория</th><th>Количество товаров</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in report2)
+    {
+        <tr><td>@item.Category</td><td>@item.Count</td></tr>
+    }
+    </tbody>
+</table>
+
+<hr>
+
+<h2>3. Средняя цена товаров по категориям (по убыванию)</h2>
+<table>
+    <thead>
+        <tr><th>Категория</th><th>Средняя цена (руб.)</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in report3)
+    {
+        <tr><td>@item.Category</td><td>@Math.Round((decimal)item.AvgPrice, 2)</td></tr>
+    }
+    </tbody>
+</table>

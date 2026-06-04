@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Управление товарами</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        .navbar { background-color: #2c3e50; color: white; padding: 15px; }
+        .navbar a { color: white; text-decoration: none; margin-right: 20px; font-size: 16px; }
+        .navbar a:hover { text-decoration: underline; }
+        .container { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .btn { display: inline-block; padding: 8px 16px; margin: 5px; border-radius: 4px; text-decoration: none; }
+        .btn-primary { background-color: #3498db; color: white; }
+        .btn-success { background-color: #2ecc71; color: white; }
+        .btn-warning { background-color: #f39c12; color: white; }
+        .btn-danger { background-color: #e74c3c; color: white; }
+        .btn:hover { opacity: 0.8; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .error { color: red; margin: 10px 0; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select { width: 300px; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        h1, h2 { margin-top: 0; }
+        hr { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Home/Index">Главная</a>
+        <a href="/Category">Категории</a>
+        <a href="/Product">Товары</a>
+        <a href="/Report">Отчёты</a>
+    </div>
+    <div class="container">
+        @if (TempData["Error"] != null)
+        {
+            <div class="error">@TempData["Error"]</div>
+        }
+        @RenderBody()
+    </div>
+</body>
+</html>

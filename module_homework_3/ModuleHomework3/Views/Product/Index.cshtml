@@ -1,0 +1,28 @@
+@model IEnumerable<ModuleHomework3.Models.Product>
+@{
+    ViewData["Title"] = "Товары";
+}
+
+<h1>Товары</h1>
+<p><a href="/Product/Create" class="btn btn-success">+ Добавить товар</a></p>
+
+<table>
+    <thead>
+        <tr><th>ID</th><th>Категория</th><th>Название</th><th>Цена (руб.)</th><th>Действия</th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Category?.Name</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="/Product/Edit/@item.Id" class="btn btn-warning">✏ Изменить</a>
+                <a href="/Product/Delete/@item.Id" class="btn btn-danger">🗑 Удалить</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
